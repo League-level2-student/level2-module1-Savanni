@@ -60,12 +60,13 @@ public class GuestBook implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		int abc = stringList.size();
 		if(e.getSource() == button1) {
 			String answer1 = JOptionPane.showInputDialog("Enter a name");
 			stringList.add(answer1);
 		}
 		if(e.getSource() == button2) {
-		JOptionPane.showMessageDialog(null, stringList + System.lineSeparator() );
+		JOptionPane.showMessageDialog(null, stringList);
 		}
 
 	}
