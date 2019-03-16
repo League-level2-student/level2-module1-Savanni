@@ -16,95 +16,113 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	Timer timer;
 	Font titleFont;
-	
+	Font titleFontS;
+	Rocketship rocket;
 	final int MENU_STATE = 0;
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
-	
-	//GameObject go;
-	
+
+	GameObject go;
+
 	public GamePanel() {
-				
+
 		timer = new Timer(1000 / 60, this);
-		titleFont = new Font("Arial",Font.PLAIN,48);
-	//	go = new GameObject(10, 10, 100, 100);
-		
+		titleFont = new Font("Arial", Font.BOLD, 48);
+		titleFontS = new Font("Arial", Font.BOLD, 24);
+		go = new GameObject(10, 10, 100, 100);
+		rocket = new Rocketship (250, 700, 50, 50);
 	}
 
 	void startGame() {
 		timer.start();
 	}
-	
-	void updateMenuState(){
-		
+
+	void updateMenuState() {
+
 	}
-	
+
 	void updateGameState() {
-		
+		rocket.update();
 	}
-	
+
 	void updateEndState() {
-		
+
 	}
-	
-	void drawMenuState(Graphics g){
-		
+
+	void drawMenuState(Graphics g) {
+
 		g.setColor(Color.BLUE);
 
-		g.fillRect(0, 0, getWidth(), getHeight());  
-	//	g.setFont(titleFont);
-	//	g.drawString("text", 100, 100);
-	//	g.setColor(Color.black);
-		// PART 7 INSTRUCTION NUMBER 2/3 NOT WORKING
+		g.fillRect(0, 0, getWidth(), getHeight());
+
+		g.setColor(Color.yellow);
+		g.setFont(titleFont);
+		g.drawString("LEAGUE INVADERS", 20, 200);
+		g.setFont(titleFontS);
+		g.drawString("Press ENTER to start", 130, 350);
+		g.drawString("Press SPACE for instructions", 90, 500);
+
 	}
-	
+
 	void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
 		
 		g.fillRect(0, 0, getWidth(), getHeight());
-		
+		rocket.draw(g);
+
 	}
 
 	void drawEndState(Graphics g) {
-		
+
+		g.setColor(Color.red);
+		g.fillRect(0, 0, getWidth(), getHeight());
+
+		g.setColor(Color.BLACK);
+		g.setFont(titleFont);
+		g.drawString("Game Over", 120, 200);
+		g.setFont(titleFontS);
+		g.drawString("You killed #### enemies", 120, 350);
+		g.drawString("Press ENTER to restart", 125, 500);
+
 	}
+
 	@Override
 
 	public void paintComponent(Graphics g) {
-	//go.draw(g);
-		if(currentState == MENU_STATE){
+		// go.draw(g);
+		if (currentState == MENU_STATE) {
 
-            drawMenuState(g);
+			drawMenuState(g);
 
-    }else if(currentState == GAME_STATE){
+		} else if (currentState == GAME_STATE) {
 
-            drawGameState(g);
+			drawGameState(g);
 
-    }else if(currentState == END_STATE){
+		} else if (currentState == END_STATE) {
 
-            drawEndState(g);
-	}
+			drawEndState(g);
+		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		//go.update();
+		// go.update();
 		repaint();
-		if(currentState == MENU_STATE){
+		if (currentState == MENU_STATE) {
 
-            updateMenuState();
+			updateMenuState();
 
-    }else if(currentState == GAME_STATE){
+		} else if (currentState == GAME_STATE) {
 
-            updateGameState();
+			updateGameState();
 
-    }else if(currentState == END_STATE){
+		} else if (currentState == END_STATE) {
 
-            updateEndState();
+			updateEndState();
 
-    }
+		}
 	}
 
 	@Override
@@ -116,17 +134,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-	if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-		currentState+=1;
-		
-		if(currentState > END_STATE){
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			currentState += 1;
 
-            currentState = MENU_STATE;
+			if (currentState > END_STATE) {
 
-    }
-	}
-		
-		
+				currentState = MENU_STATE;
+
+			}
+		}
+
 	}
 
 	@Override

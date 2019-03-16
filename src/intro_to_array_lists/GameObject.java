@@ -24,12 +24,12 @@ public class GameObject {
      }
      
      public void update() {
-    	 x+=1;
+    
     		 
      }
      
     public void draw(Graphics g) {
-    	g.fillRect(x, y, width, height);
+ 
      }
      
 }
