@@ -5,10 +5,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
-import javax.swing.text.AbstractDocument.LeafElement;
-import javax.xml.stream.events.Characters;
-
-import org.w3c.dom.CharacterData;
 
 public class LeagueInvaders implements KeyListener {
 
@@ -42,21 +38,6 @@ public class LeagueInvaders implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getKeyChar() == KeyEvent.VK_UP) {
-			
-		}
-
-		if (e.getKeyChar() == KeyEvent.VK_DOWN) {
-
-		}
-
-		if (e.getKeyChar() == KeyEvent.VK_LEFT) {
-
-		}
-
-		if (e.getKeyChar() == KeyEvent.VK_RIGHT) {
-
-		}
 
 	}
 

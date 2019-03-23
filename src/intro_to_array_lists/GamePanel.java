@@ -3,7 +3,6 @@ package intro_to_array_lists;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.RenderingHints.Key;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -17,12 +16,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer timer;
 	Font titleFont;
 	Font titleFontS;
-	Rocketship rocket;
+	Rocketship rocket = new Rocketship(250, 700, 50, 50);
 	final int MENU_STATE = 0;
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
-
+	ObjectManager OB = new ObjectManager(rocket);
 	GameObject go;
 
 	public GamePanel() {
@@ -31,7 +30,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		titleFont = new Font("Arial", Font.BOLD, 48);
 		titleFontS = new Font("Arial", Font.BOLD, 24);
 		go = new GameObject(10, 10, 100, 100);
-		rocket = new Rocketship (250, 700, 50, 50);
+
 	}
 
 	void startGame() {
@@ -43,7 +42,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateGameState() {
-		rocket.update();
+		OB.update();
 	}
 
 	void updateEndState() {
@@ -67,9 +66,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
-		
+
 		g.fillRect(0, 0, getWidth(), getHeight());
-		rocket.draw(g);
+		OB.draw(g);
 
 	}
 
@@ -142,6 +141,27 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 				currentState = MENU_STATE;
 
 			}
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			rocket.y = rocket.y - rocket.speed;
+			System.out.println("up");
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			rocket.y = rocket.y + rocket.speed;
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			rocket.x = rocket.x - rocket.speed;
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			rocket.x = rocket.x + rocket.speed;
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			OB.addProjectile(new Projectile(rocket.x, rocket.y, 10, 10));
 		}
 
 	}
