@@ -10,7 +10,7 @@ public class LeagueInvaders implements KeyListener {
 
 	JFrame frame;
 	int height = 800;
-	int width = 500;
+	static int width = 500;
 	GamePanel gp;
 
 	public LeagueInvaders() {

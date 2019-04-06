@@ -3,23 +3,35 @@ package intro_to_array_lists;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Rocketship extends GameObject {
+public class Alien extends GameObject{
 
-	int speed;
-
-	public Rocketship(int r_x, int r_y, int r_width, int r_height) {
+	public Alien(int r_x, int r_y, int r_width, int r_height) {
 		super(r_x, r_y, r_width, r_height);
-		speed = 50;
+	
 	}
 
+
 	public void update() {
-		super.update();
+		y = y+1;
 	}
 
 	public void draw(Graphics g) {
-		g.setColor(Color.BLUE);
+		g.setColor(Color.yellow);
 
 		g.fillRect(x, y, width, height);
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

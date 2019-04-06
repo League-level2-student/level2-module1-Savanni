@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	public GamePanel() {
 
-		timer = new Timer(1000 / 60, this);
+		timer = new Timer(1 / 60, this);
 		titleFont = new Font("Arial", Font.BOLD, 48);
 		titleFontS = new Font("Arial", Font.BOLD, 24);
 		go = new GameObject(10, 10, 100, 100);
@@ -43,6 +43,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void updateGameState() {
 		OB.update();
+		OB.manageEnemies();
 	}
 
 	void updateEndState() {
@@ -161,7 +162,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-			OB.addProjectile(new Projectile(rocket.x, rocket.y, 10, 10));
+			OB.addProjectile(new Projectile(rocket.x + 20, rocket.y, 10, 10));
 		}
 
 	}

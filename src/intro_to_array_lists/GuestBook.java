@@ -51,9 +51,8 @@ public class GuestBook implements ActionListener {
 
 		button1.addActionListener(this);
 		button2.addActionListener(this);
-		
+
 		stringList = new ArrayList();
-		
 
 	}
 
@@ -61,12 +60,12 @@ public class GuestBook implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		int abc = stringList.size();
-		if(e.getSource() == button1) {
+		if (e.getSource() == button1) {
 			String answer1 = JOptionPane.showInputDialog("Enter a name");
 			stringList.add(answer1);
 		}
-		if(e.getSource() == button2) {
-		JOptionPane.showMessageDialog(null, stringList);
+		if (e.getSource() == button2) {
+			JOptionPane.showMessageDialog(null, stringList);
 		}
 
 	}
