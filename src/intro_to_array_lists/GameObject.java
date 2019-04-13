@@ -17,6 +17,7 @@ public class GameObject {
 	Rectangle collisionBox;
 	
 	
+	
 	boolean isAlive = true;
 
 	public GameObject(int r_x, int r_y, int r_width, int r_height) {

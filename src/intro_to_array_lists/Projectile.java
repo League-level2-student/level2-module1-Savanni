@@ -9,11 +9,12 @@ public class Projectile extends GameObject {
 
 	public Projectile(int r_x, int r_y, int r_width, int r_height) {
 		super(r_x, r_y, r_width, r_height);
-		speed = 1;
+		speed = 50;
 
 	}
 
 	public void update() {
+		super.update();
 		y = y - speed;
 
 		if (y < 0) {
@@ -22,8 +23,7 @@ public class Projectile extends GameObject {
 	}
 
 	public void draw(Graphics g) {
-		g.setColor(Color.red);
-		g.fillRect(x, y, width, height);
+		g.drawImage(GamePanel.bulletImg, x, y, width, height, null);
 	}
 
 }
