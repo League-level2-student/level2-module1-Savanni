@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -169,8 +170,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		
+		if(currentState == MENU_STATE && e.getKeyCode() == KeyEvent.VK_SPACE) {
+			JOptionPane.showMessageDialog(null, "To play League Invaders, you must move with your arrow keys and press space to shoot at many aliens as you can before you die.");
+		}
+		
+		
+		
+		
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			
+			if (currentState == END_STATE) {
+				rocket = new Rocketship(250, 700, 50, 50);
+				OB = new ObjectManager(rocket);
+			}
+			
 			currentState += 1;
+			
+			
 
 			if (currentState > END_STATE) {
 
@@ -178,10 +195,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 			}
 
-			if (currentState == END_STATE) {
-				rocket = new Rocketship(250, 700, 50, 50);
-				OB = new ObjectManager(rocket);
-			}
+			
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
